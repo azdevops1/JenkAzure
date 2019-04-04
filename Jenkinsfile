@@ -19,17 +19,17 @@ pipeline {
         }
         stage('tfsvars create'){
             steps {
-                sh 'sudo cp /home/azureuser/variables.tf ./JenkAzure/'
+                sh 'sudo cp /home/azureuser/tfinfo/variables.tf ./JenkAzure/'
             }
         }
         stage('terraform init') {
             steps {
-                sh 'sudo /home/azureuser/terraform init ./JenkAzure'
+                sh 'sudo /home/azureuser/tfinfo/terraform init ./JenkAzure'
             }
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./JenkAzure; sudo /home/azureuser/terraform plan ./JenkAzure'
+                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
             }
         }
         stage('terraform ended') {
