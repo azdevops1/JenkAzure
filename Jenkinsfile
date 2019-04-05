@@ -20,6 +20,7 @@ pipeline {
         stage('tfsvars create'){
             steps {
                 sh 'sudo cp /home/azureuser/tfinfo/terraform.tfvars ./JenkAzure/'
+                sh 'sudo cp ~/.azure/credentials ./JenkAzure/'
 		
             }
         }
@@ -30,7 +31,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan -var-file=terraform.tfvars ./JenkAzure'
+                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
             }
         }
         stage('terraform ended') {
