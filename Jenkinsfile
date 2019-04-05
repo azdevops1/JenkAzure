@@ -30,7 +30,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
+                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan -var-file=./terraform.tfvars ./JenkAzure'
             }
         }
         stage('terraform ended') {
