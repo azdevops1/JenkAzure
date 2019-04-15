@@ -34,7 +34,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-			sh 'ls ./JenkAzure; sudo cd JenkAzure; sudo terraform plan'
+			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan'
 	    }
         }
         stage('terraform ended') {
