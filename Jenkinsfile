@@ -34,9 +34,15 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan --var-file=terraform.tfvars'
+			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan --var-file=terraform.tfvars --out "planfile"'
 	    }
         }
+        stage('terraform apply') {
+            steps {
+			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform apply --var-file=terraform.tfvars --input=false "planfile"'
+	    }
+        }
+
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
