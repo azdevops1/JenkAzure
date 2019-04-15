@@ -1,7 +1,3 @@
-variable "srvpid" {}
-variable "srvpkey" {}
-variable "subsid" {}
-variable "tntid" {}
 
 provider "azurerm" {
 
