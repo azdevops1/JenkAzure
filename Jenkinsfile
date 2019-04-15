@@ -17,13 +17,7 @@ pipeline {
                 sh 'sudo rm -r *;sudo git clone https://github.com/azdevops1/JenkAzure.git'
             }
         }
-        stage('tfsvars create'){
-            steps {
-                sh 'sudo cp /home/azureuser/tfinfo/terraform.tfvars ./JenkAzure/'
-                sh 'sudo cp /home/azureuser/.azure/credentials ./JenkAzure/'
-		
-            }
-        }
+      
         stage('terraform init') {
             steps {
                 sh 'sudo /home/azureuser/tfinfo/terraform init ./JenkAzure'
