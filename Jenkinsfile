@@ -31,7 +31,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-		withCredentials([azureServicePrincipal('bbe34723-7e3c-4f1b-a64e-83f4b09947bf')]) {
+		withCredentials([azureServicePrincipal('azDevOps')]) {
 	                sh  '''
 
         	             az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
