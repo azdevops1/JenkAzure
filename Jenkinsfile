@@ -31,7 +31,13 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
+                sh  '''
+
+                     az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+
+                    '''
+
+		sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
             }
         }
         stage('terraform ended') {
