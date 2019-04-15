@@ -31,13 +31,15 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-                sh  '''
+		withCredentials([azureServicePrincipal('bbe34723-7e3c-4f1b-a64e-83f4b09947bf')]) {
+	                sh  '''
 
-                     az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+        	             az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+	
+        	            '''
 
-                    '''
-
-		sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
+			sh 'ls ./JenkAzure; sudo /home/azureuser/tfinfo/terraform plan ./JenkAzure'
+		}
             }
         }
         stage('terraform ended') {
