@@ -34,12 +34,12 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan --var-file=terraform.tfvars --out "planfile"'
+			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out "planfile"'
 	    }
         }
         stage('terraform apply') {
             steps {
-			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform apply --var-file=terraform.tfvars --input=false "planfile"'
+			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform apply -input=false "planfile"'
 	    }
         }
 
