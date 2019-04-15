@@ -20,7 +20,8 @@ pipeline {
 
     	stage('tfsvars create'){
             steps {
-                sh 'sudo cp /home/azureuser/tfinfo/terraform.tfvars ./JenkAzure/'
+                sh 'sudo cp /home/azureuser/tfinfo/terraform ./JenkAzure/'
+		sh 'sudo cp /home/azureuser/tfinfo/terraform.tfvars ./JenkAzure/'
                 sh 'sudo cp /home/azureuser/.azure/credentials ./JenkAzure/'
 		
             }
