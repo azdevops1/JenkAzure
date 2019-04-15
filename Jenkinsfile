@@ -29,12 +29,12 @@ pipeline {
       
         stage('terraform init') {
             steps {
-                sh 'sudo /home/azureuser/tfinfo/terraform init ./JenkAzure'
+                sh 'cd JenkAzure; sudo terraform init'
             }
         }
         stage('terraform plan') {
             steps {
-			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan'
+			sh 'ls ./JenkAzure; sudo terraform plan'
 	    }
         }
         stage('terraform ended') {
