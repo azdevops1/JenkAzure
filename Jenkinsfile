@@ -37,7 +37,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-		sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out planfile -var 'REGION=${params.region}''
+		sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out planfile -var "location=${params.location}"'
 		        
 	    }
 	
