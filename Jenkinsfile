@@ -2,9 +2,6 @@ pipeline {
     agent {
         node {
             label 'master'
-        parameters {
-        choice(choices: ['South Central US', 'West US'], description: 'What Azure region?', name: 'region')
-     	   }
        }
     }
 
