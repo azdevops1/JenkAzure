@@ -2,7 +2,9 @@ variable "srvpid" {}
 variable "srvpkey" {}
 variable "subsid" {}
 variable "tntid" {}
-variable "REGION" {}
+variable "REGION" {
+	REGION = "$REGION_PARAM"
+}
 
 provider "azurerm" {
   subscription_id = "${var.subsid}"
