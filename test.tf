@@ -2,6 +2,7 @@ variable "srvpid" {}
 variable "srvpkey" {}
 variable "subsid" {}
 variable "tntid" {}
+variable "REGION" {}
 
 provider "azurerm" {
   subscription_id = "${var.subsid}"
@@ -11,5 +12,5 @@ provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"
-        location = "${params.region}"
+        location = "${var.REGION}"
 }
