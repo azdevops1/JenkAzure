@@ -2,7 +2,10 @@ pipeline {
     agent {
         node {
             label 'master'
-        }
+        parameters {
+        choice(choices: ['South Central US', 'West US'], description: 'What Azure region?', name: 'region')
+     	   }
+       }
     }
 
     stages {
@@ -34,7 +37,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-		sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out=planfile'
+		sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out planfile -var 'REGION=${params.region}''
 		        
 	    }
 	
