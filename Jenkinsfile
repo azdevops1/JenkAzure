@@ -35,10 +35,7 @@ pipeline {
         stage('terraform plan') {
             steps {
 			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform plan -out "planfile"'
-		        // Input Step
-			timeout(time: 15, unit: "MINUTES") {
-	                input message: 'Do you want to approve the action?', ok: 'Yes'
-		        }
+		        
 	    }
 	
         }
@@ -47,6 +44,10 @@ pipeline {
 
         stage('terraform apply') {
             steps {
+			// Input Step
+			timeout(time: 15, unit: "MINUTES") {
+	                input message: 'Review the output of plan and apply if approved?', ok: 'Yes'
+		        }
 			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform apply -input=false "planfile"'
 	    }
         }
