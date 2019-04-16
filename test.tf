@@ -16,5 +16,5 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"
-        location = "${var.REGION}"
+        location = "${var.REGION_PARAM}"
 }
