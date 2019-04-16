@@ -11,6 +11,7 @@ provider "azurerm" {
   client_id = "${var.srvpid}"
   client_secret = "${var.srvpkey}"
   tenant_id = "${var.tntid}"
+  REGION = "$TF_VAR_REGION_PARAM"
 }
 
 
