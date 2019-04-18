@@ -29,7 +29,7 @@ pipeline {
       
         stage('terraform init') {
             steps {
-                sh 'cd JenkAzure; sudo terraform init'
+                sh 'cd JenkAzure/${params.typeofdeployment}; sudo terraform init'
             }
         }
         stage('terraform plan') {
