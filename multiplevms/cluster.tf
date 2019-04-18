@@ -7,7 +7,7 @@ variable "resourcegroupname" {}
 
 provider "azurerm" {
 
-  client_id = "${var.srvpid"}
+  client_id = "${var.srvpid}"
 
   client_secret = "${var.srvpkey}"
 
