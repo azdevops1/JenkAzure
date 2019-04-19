@@ -48,7 +48,7 @@ pipeline {
 			timeout(time: 15, unit: "MINUTES") {
 	                input message: 'Review the output of plan and apply if approved?', ok: 'Yes'
 		        }
-			sh 'ls ./JenkAzure; cd JenkAzure; sudo terraform apply -input=false "planfile"'
+			sh "ls ./JenkAzure/${params.typeofdeployment}; cd JenkAzure/${params.typeofdeployment}; sudo terraform apply -input=false planfile -var \"location=${params.azurelocation}\" -var \"resourcegroupname=${params.azurergname}\""
 	    }
         }
 
