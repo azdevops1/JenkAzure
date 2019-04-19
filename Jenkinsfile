@@ -22,6 +22,7 @@ pipeline {
             steps {
                 sh "sudo cp /home/azureuser/tfinfo/terraform ./JenkAzure/${params.typeofdeployment}"
 	    sh "sudo cp /home/azureuser/.azure/credentials ./JenkAzure/${params.typeofdeployment}"
+	    sh "sudo cp /home/azureuser/tfinfo/terraform.tfvars ./JenkAzure/${params.typeofdeployment}"
 		
             }
         }
