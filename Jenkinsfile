@@ -33,7 +33,7 @@ pipeline {
         }
         stage('terraform plan') {
             steps {
-		sh "ls ./JenkAzure; cd JenkAzure/${params.typeofdeployment}; sudo terraform plan -out planfile -var \"location=${params.azurelocation}\" -var \"resourcegroupname=${params.azurergname}\""
+		sh "ls ./JenkAzure/${params.typeofdeployment}; cd JenkAzure/${params.typeofdeployment}; sudo terraform plan -out planfile -var \"location=${params.azurelocation}\" -var \"resourcegroupname=${params.azurergname}\""
 		        
 	    }
 	
